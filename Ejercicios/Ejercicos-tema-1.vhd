@@ -335,3 +335,61 @@ BEGIN
         scin(i + 1) <= scout(i);
     END GENERATE gen;
 END Behavioral; -- Behavioral
+
+-- Ejercicio: Máquina de estados finitos FSM
+
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.ALL;
+
+ENTITY FSM IS
+    PORT (
+        reset, E, clk : IN BIT;
+        O : OUT BIT);
+END FSM;
+
+ARCHITECTURE ARCH OF FSM IS
+    TYPE ESTADOS IS (S1, S2, S3, S4);
+    SIGNAL Estado, SIG_ESTADO : ESTADOS;
+BEGIN
+    SYNC : PROCESS (clk, reset)
+    BEGIN
+        IF rising_edge(clk) THEN
+            IF reset = '1' THEN
+                ESTADO <= S1;
+            ELSE
+                ESTADO <= SIG_ESTADO;
+            END IF;
+        END IF;
+    END PROCESS; -- SYNC
+    COMB : PROCESS (ESTADO, E)
+    BEGIN
+        CASE(ESTADO) IS
+
+            WHEN S1 => O <= '0';
+            IF E = '0' THEN
+                SIG_ESTADO <= S2;
+            ELSE
+                SIG_ESTADO <= S1;
+            END IF;
+            WHEN S2 => O <= '0';
+            IF (E = '0') THEN
+                SIG_ESTADO <= S3;
+            ELSE
+                SIG_ESTADO <= S1;
+            END IF;
+            WHEN S3 => O <= '0';
+            IF (E = '0') THEN
+                SIG_ESTADO <= S3;
+            ELSE
+                SIG_ESTADO <= S4;
+
+            END IF;
+            WHEN S4 => O <= '1';
+            IF (E = '0') THEN
+                SIG_ESTADO <= S2;
+            ELSE
+                SIG_ESTADO <= S1;
+            END IF;
+        END CASE;
+    END PROCESS; -- COMB
+END ARCHITECTURE; -- ARCH
