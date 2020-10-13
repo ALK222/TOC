@@ -43,7 +43,7 @@ BEGIN
     uut : sum_4bits PORT MAP(a => a, b => b, c => c);
 
     -- Simulation process
-    stim_proc : PROCESS ()
+    stim_proc : PROCESS 
     BEGIN
         a <= "0000";
         b <= "0000";

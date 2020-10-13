@@ -5,7 +5,7 @@
 --==================================
 
 LIBRARY IEEE;
-USE IEEE.STD_LOGIC_1165.ALL;
+USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 USE STD.TEXTIO.ALL;
 
@@ -43,7 +43,7 @@ BEGIN
     dut : sum_4bits PORT MAP(a => a, b => b, c => c);
 
     -- Simulation process
-    p_stim : PROCESS ()
+    p_stim : PROCESS
         VARIABLE v_i : NATURAL := 0;
         VARIABLE v_j : NATURAL := 0;
     BEGIN
