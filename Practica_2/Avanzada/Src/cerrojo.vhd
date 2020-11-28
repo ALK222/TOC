@@ -89,13 +89,9 @@ BEGIN
             END IF;
             -- Final state
             WHEN fin_st =>
-            IF (s_key = "11111111") THEN
-                next_st <= ini_st;
-            ELSE
-                next_st <= current_st;
-                intentos <= "0000";
-                bloqueado <= '1';
-            END IF;
+            next_st <= current_st;
+            intentos <= "0000";
+            bloqueado <= '1';
             WHEN OTHERS =>
             intentos <= "0000";
             next_st <= ini_st;
