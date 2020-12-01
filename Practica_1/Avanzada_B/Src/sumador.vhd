@@ -1,20 +1,20 @@
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_ARITH.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-entity sumador is
-  Port (
-    A : IN   std_logic_vector(3 downto 0);
-    B : IN   std_logic_vector(3 downto 0);
-    C : OUT  std_logic_vector(3 downto 0)   
+ENTITY sumador IS
+  PORT (
+    A : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+    B : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+    C : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
   );
-end sumador;
+END sumador;
 
-architecture Behavioral of sumador is
+ARCHITECTURE Behavioral OF sumador IS
 
-begin
+BEGIN
 
   C <= A + B;
 
-end Behavioral;
+END Behavioral;

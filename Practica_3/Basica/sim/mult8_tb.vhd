@@ -43,7 +43,7 @@ ARCHITECTURE Behavioral OF mult8_tb IS
             a : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             b : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
             c : OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
-            fin : out std_logic);
+            fin : OUT STD_LOGIC);
     END COMPONENT;
 
     -- Input signals
@@ -85,11 +85,11 @@ BEGIN
         b <= "0000";
         ini <= '1';
         WAIT FOR 2000 ns;
-        
+
         rst <= '1';
-        wait for 20 ns;
+        WAIT FOR 20 ns;
         rst <= '0';
-        
+
         a <= "0001";
         b <= "0001";
         ini <= '1';
@@ -97,45 +97,45 @@ BEGIN
         WAIT FOR 2000 ns;
 
         rst <= '1';
-        wait for 20 ns;
+        WAIT FOR 20 ns;
         rst <= '0';
-        
+
         a <= "0001";
         b <= "0010";
         ini <= '1';
         WAIT FOR 2000 ns;
 
         rst <= '1';
-        wait for 20 ns;
+        WAIT FOR 20 ns;
         rst <= '0';
-        
+
         a <= "0010";
         b <= "1000";
         ini <= '1';
         WAIT FOR 2000 ns;
 
         rst <= '1';
-        wait for 20 ns;
+        WAIT FOR 20 ns;
         rst <= '0';
-        
+
         a <= "1000";
         b <= "0010";
         ini <= '1';
         WAIT FOR 2000 ns;
 
         rst <= '1';
-        wait for 20 ns;
+        WAIT FOR 20 ns;
         rst <= '0';
-        
+
         a <= "1010";
         b <= "0101";
         ini <= '1';
         WAIT FOR 2000 ns;
 
         rst <= '1';
-        wait for 20 ns;
+        WAIT FOR 20 ns;
         rst <= '0';
-        
+
         a <= "1111";
         b <= "1111";
         ini <= '1';

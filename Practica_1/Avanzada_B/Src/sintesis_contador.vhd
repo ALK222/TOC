@@ -1,55 +1,55 @@
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_ARITH.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-entity sintesis_contador is
-  Port (
-    rst    : IN  std_logic;
-    clk    : IN  std_logic;
-    cuenta : IN  std_logic;
-    salida : OUT std_logic_vector(3 downto 0)
+ENTITY sintesis_contador IS
+  PORT (
+    rst : IN STD_LOGIC;
+    clk : IN STD_LOGIC;
+    cuenta : IN STD_LOGIC;
+    salida : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
   );
-end sintesis_contador;
+END sintesis_contador;
 
-architecture syn of sintesis_contador is
-   
-    component contadorMod16 is
-    port (
-      rst    : IN  std_logic;
-      clk    : IN  std_logic;
-      cuenta : IN  std_logic;
-      salida : OUT std_logic_vector(3 downto 0)
+ARCHITECTURE syn OF sintesis_contador IS
+
+  COMPONENT contadorMod16 IS
+    PORT (
+      rst : IN STD_LOGIC;
+      clk : IN STD_LOGIC;
+      cuenta : IN STD_LOGIC;
+      salida : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
     );
-    end component;
-    
-    signal clk_1Hz : std_logic;
+  END COMPONENT;
 
-begin
- 
-    divisor:
-    PROCESS(rst, clk)
-      variable cuenta : natural range 0 to 49999999;
-    BEGIN
-      IF (rst='1') THEN
+  SIGNAL clk_1Hz : STD_LOGIC;
+
+BEGIN
+
+  divisor :
+  PROCESS (rst, clk)
+    VARIABLE cuenta : NATURAL RANGE 0 TO 49999999;
+  BEGIN
+    IF (rst = '1') THEN
+      cuenta := 0;
+      clk_1Hz <= '0';
+    ELSIF (rising_edge(clk)) THEN
+      IF (cuenta = 49999999) THEN
+        clk_1Hz <= NOT clk_1Hz;
         cuenta := 0;
-        clk_1Hz<='0';
-      ELSIF(rising_edge(clk)) THEN
-        IF (cuenta=49999999) THEN 
-          clk_1Hz <= not clk_1Hz;
-          cuenta := 0;
-        ELSE
-          cuenta := cuenta + 1;
-       END IF;
-     END IF;
-   END PROCESS divisor;
-  
-   contador: contadorMod16 PORT MAP (
-         rst => rst,
-         clk => clk_1Hz,
-		     cuenta => cuenta,
-         salida => salida
-        );
+      ELSE
+        cuenta := cuenta + 1;
+      END IF;
+    END IF;
+  END PROCESS divisor;
 
-end syn;
+  contador : contadorMod16 PORT MAP(
+    rst => rst,
+    clk => clk_1Hz,
+    cuenta => cuenta,
+    salida => salida
+  );
+
+END syn;

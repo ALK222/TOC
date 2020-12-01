@@ -41,11 +41,11 @@ END contadorMod16;
 ARCHITECTURE Behavioral OF contadorMod16 IS
   --COMPONENTS
   COMPONENT sumador
-        PORT (
-            A : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
-            B : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
-            C : OUT STD_LOGIC_VECTOR (3 DOWNTO 0));
-    END COMPONENT;
+    PORT (
+      A : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+      B : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+      C : OUT STD_LOGIC_VECTOR (3 DOWNTO 0));
+  END COMPONENT;
   COMPONENT registro
     PORT (
       rst1 : IN STD_LOGIC;
@@ -55,10 +55,10 @@ ARCHITECTURE Behavioral OF contadorMod16 IS
       S : OUT STD_LOGIC_VECTOR(3 DOWNTO 0));
   END COMPONENT;
   --SIGNALS
-  signal carry : STD_LOGIC_VECTOR(3 downto 0);
-  signal carry1 : STD_LOGIC_VECTOR(3 downto 0);
+  SIGNAL carry : STD_LOGIC_VECTOR(3 DOWNTO 0);
+  SIGNAL carry1 : STD_LOGIC_VECTOR(3 DOWNTO 0);
 BEGIN
-begin_registro : registro PORT MAP(rst1 => rst,clk1 => clk, load=> cuenta,E => carry, S => carry1);
-begin_sumdor : sumador PORT MAP(A => carry1, B => "0011", C => carry);
-salida <= carry1;
+  begin_registro : registro PORT MAP(rst1 => rst, clk1 => clk, load => cuenta, E => carry, S => carry1);
+  begin_sumdor : sumador PORT MAP(A => carry1, B => "0011", C => carry);
+  salida <= carry1;
 END Behavioral;
