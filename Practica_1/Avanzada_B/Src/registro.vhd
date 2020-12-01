@@ -1,29 +1,29 @@
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
-entity registro is
-  Port (
-    rst1  : IN  std_logic;
-    clk1  : IN  std_logic;
-    load : IN  std_logic;
-    E    : IN  std_logic_vector(3 downto 0);
-    S    : OUT std_logic_vector(3 downto 0)   
+ENTITY registro IS
+  PORT (
+    rst1 : IN STD_LOGIC;
+    clk1 : IN STD_LOGIC;
+    load : IN STD_LOGIC;
+    E : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+    S : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
   );
-end registro;
+END registro;
 
-architecture Behavioral of registro is
+ARCHITECTURE Behavioral OF registro IS
 
-begin
+BEGIN
 
-  process(clk1)
-  begin
-    if (rst1 = '1') then
-            S <= "0000";
-        elsif (rising_edge(clk1)) then
-            if(load = '1') then
-                S <= E;
-        end if;
-    end if;
-  end process;
+  PROCESS (clk1)
+  BEGIN
+    IF (rst1 = '1') THEN
+      S <= "0000";
+    ELSIF (rising_edge(clk1)) THEN
+      IF (load = '1') THEN
+        S <= E;
+      END IF;
+    END IF;
+  END PROCESS;
 
-end Behavioral;
+END Behavioral;
