@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 08.12.2020 11:56:11
+-- Create Date: 15.12.2020 09:37:23
 -- Design Name: 
--- Module Name: cont_mod10 - Behavioral
+-- Module Name: esp_leds - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -19,40 +19,38 @@
 ----------------------------------------------------------------------------------
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
-USE IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-ENTITY cont_mod10 IS
+ENTITY esp_leds IS
 	PORT (
 		rst : IN STD_LOGIC;
 		clk : IN STD_LOGIC;
-		enable : IN STD_LOGIC;
-		leds : OUT STD_LOGIC_VECTOR(3 DOWNTO 0));
-END cont_mod10;
+		leds : OUT STD_LOGIC_VECTOR(15 DOWNTO 0));
+END esp_leds;
 
-ARCHITECTURE Behavioral OF cont_mod10 IS
+ARCHITECTURE Behavioral OF esp_leds IS
+	SIGNAL tmp : STD_LOGIC_VECTOR(15 DOWNTO 0);
 BEGIN
-
-	count : PROCESS (rst, clk, enable)
-		VARIABLE numero : STD_LOGIC_VECTOR(3 DOWNTO 0);
+	seq : PROCESS (clk, rst, tmp)
 	BEGIN
 		IF rst = '1' THEN
-			numero := (OTHERS => '0');
-		ELSE
-			IF rising_edge(clk) THEN
-				IF enable = '1' THEN
-					IF numero = "1001" THEN -- If number is 9, it goes to 0
-						numero := (OTHERS => '0');
-					ELSE
-						numero := STD_LOGIC_VECTOR(unsigned(numero) + 1);
-					END IF;
-				END IF;
+			tmp <= "1111111100000000";
+		ELSIF rising_edge(clk) THEN
+			IF tmp = "1111111100000000" THEN
+				tmp <= "0000000011111111";
+			ELSE
+				tmp <= "1111111100000000";
 			END IF;
 		END IF;
-		leds <= numero;
-	END PROCESS; -- count
+	END PROCESS; -- seq
+
+	leds <= tmp;
 END Behavioral;

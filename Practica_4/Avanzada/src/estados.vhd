@@ -9,7 +9,7 @@ ENTITY estados IS
 		ini : IN STD_LOGIC;
 		fin : IN STD_LOGIC;
 		ctrl_data : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
-		ctrl : OUT STD_LOGIC_VECTOR (6 DOWNTO 0));
+		ctrl : OUT STD_LOGIC_VECTOR (7 DOWNTO 0));
 END estados;
 
 ARCHITECTURE Behavioral OF estados IS
@@ -17,18 +17,19 @@ ARCHITECTURE Behavioral OF estados IS
 	ALIAS comp_a_b : STD_LOGIC IS ctrl_data(1);
 	ALIAS comp_n_10 : STD_LOGIC IS ctrl_data(0);
 
-	TYPE estados IS (S0, S1, S2, S3, S4);
+	TYPE estados IS (S0, S1, S2, S3, S4, S5);
 
 	SIGNAL current_st, next_st : estados;
 	SIGNAL aux_ctrl : STD_LOGIC_VECTOR(6 DOWNTO 0);
 
 	ALIAS cont_rst : STD_LOGIC IS ctrl(0);
-	ALIAS cont_enable : STD_LOGIC IS ctrl(1);
+	ALIAS cont_enable_1 : STD_LOGIC IS ctrl(1);
 	ALIAS seq_rst : STD_LOGIC IS ctrl(2);
 	ALIAS seq_enable : STD_LOGIC IS ctrl(3);
 	ALIAS mux_leds_a : STD_LOGIC IS ctrl(4);
 	ALIAS mux_leds_b : STD_LOGIC IS ctrl(5);
 	ALIAS att_rst : STD_LOGIC IS ctrl(6);
+	ALIAS esp_en : STD_LOGIC IS ctrl(7);
 
 BEGIN
 	reset : PROCESS (clk, rst)
@@ -50,12 +51,8 @@ BEGIN
 					next_st <= S4;
 				END IF;
 			WHEN S1 =>
-				IF fin = '1' THEN
-					IF comp_a_b = '1' THEN
-						next_st <= S2;
-					ELSE
-						next_st <= S3;
-					END IF;
+				IF ini = '1' THEN
+					next_st <= S5;
 				ELSE
 					next_st <= S1;
 				END IF;
@@ -71,6 +68,16 @@ BEGIN
 				ELSE
 					next_st <= S4;
 				END IF;
+			WHEN S5 =>
+				IF fin = '1' THEN
+					IF (comp_a_b = '1') THEN
+						next_st <= S2;
+					ELSE
+						next_st <= S3;
+					END IF;
+				ELSE
+					next_st <= S5;
+				END IF;
 			WHEN OTHERS =>
 				IF comp_n_10 = '1' THEN
 					next_st <= S0;
@@ -85,44 +92,58 @@ BEGIN
 		CASE current_st IS
 			WHEN S0 =>
 				cont_rst <= '1';
-				cont_enable <= '0';
+				cont_enable_1 <= '0';
 				seq_rst <= '1';
 				seq_enable <= '0';
 				mux_leds_a <= '1';
 				mux_leds_b <= '0';
 				att_rst <= '1';
+				esp_en <= '0';
 			WHEN S1 =>
 				cont_rst <= '0';
-				cont_enable <= '1';
-				seq_rst <= '1';
+				cont_enable_1 <= '1';
+				seq_rst <= '0';
 				seq_enable <= '0';
 				mux_leds_a <= '0';
 				mux_leds_b <= '0';
 				att_rst <= '0';
+				esp_en <= '0';
 			WHEN S2 =>
 				cont_rst <= '0';
-				cont_enable <= '0';
+				cont_enable_1 <= '0';
 				seq_rst <= '0';
 				seq_enable <= '1';
 				mux_leds_a <= '1';
 				mux_leds_b <= '1';
 				att_rst <= '1';
+				esp_en <= '0';
 			WHEN S3 =>
 				cont_rst <= '0';
-				cont_enable <= '0';
+				cont_enable_1 <= '0';
 				seq_rst <= '0';
 				seq_enable <= '1';
 				mux_leds_a <= '0';
 				mux_leds_b <= '1';
 				att_rst <= '1';
+				esp_en <= '0';
 			WHEN S4 =>
 				cont_rst <= '0';
-				cont_enable <= '0';
+				cont_enable_1 <= '0';
 				seq_rst <= '1';
 				seq_enable <= '0';
 				mux_leds_a <= '1';
 				mux_leds_b <= '0';
 				att_rst <= '0';
+				esp_en <= '0';
+			WHEN S5 =>
+				cont_rst <= '0';
+				cont_enable_1 <= '1';
+				seq_rst <= '1';
+				seq_enable <= '0';
+				mux_leds_a <= '0';
+				mux_leds_b <= '0';
+				att_rst <= '0';
+				esp_en <= '1';
 			WHEN OTHERS =>
 				ctrl <= (OTHERS => '0');
 		END CASE;
