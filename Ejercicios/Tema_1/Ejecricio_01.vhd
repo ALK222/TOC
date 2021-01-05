@@ -1,0 +1,120 @@
+-- Apartado a
+ENTITY XOR4Bits IS
+	PORT (
+		x : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+		y : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+		z : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+	);
+END XOR4Bits;
+
+ARCHITECTURE Behavioral OF XOR4Bits IS
+
+BEGIN
+
+	z <= x XOR y;
+
+END Behavioral;
+ENTITY XOR4Bits IS
+	PORT (
+		x : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+		y : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+		z : OUT STD_LOGIC_VECTOR (3 DOWNTO 0)
+	);
+END XOR4Bits;
+
+ARCHITECTURE Behavioral OF XOR4Bits IS
+
+BEGIN
+
+	z <= x XOR y;
+
+END Behavioral;
+
+-- Apartado b
+ENTITY MUX4a1 IS
+	PORT (
+		a : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+		s : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
+		z : OUT STD_LOGIC
+	);
+END MUX4a1;
+
+ARCHITECTURE Behavioral OF MUX4a1 IS
+
+BEGIN
+
+	WITH s SELECT
+		z <= a(0) WHEN "00",
+		a(1) WHEN "01",
+		a(2) WHEN "10",
+		a(3) WHEN OTHERS;
+
+END Behavioral;
+
+-- Apartado c
+ENTITY DECO3a8 IS
+	PORT (
+		s : IN STD_LOGIC_VECTOR (2 DOWNTO 0);
+		y : OUT STD_LOGIC_VECTOR (7 DOWNTO 0)
+	);
+END DECO3a8;
+
+ARCHITECTURE Behavioral OF DECO3a8 IS
+
+BEGIN
+
+	WITH s SELECT
+		y <= "00000001" WHEN "000",
+		"00000010" WHEN "001",
+		"00000100" WHEN "010",
+		"00001000" WHEN "011",
+		"00010000" WHEN "100",
+		"00100000" WHEN "101",
+		"01000000" WHEN "110",
+		"10000000" WHEN "111",
+		"00000000" WHEN OTHERS;
+
+END Behavioral;
+
+-- Apartado D
+ENTITY CODE8a3 IS
+	PORT (
+		s : IN STD_LOGIC_VECTOR (7 DOWNTO 0);
+		y : OUT STD_LOGIC_VECTOR (2 DOWNTO 0)
+	);
+END CODE8a3;
+
+ARCHITECTURE Behavioral OF CODE8a3 IS
+
+BEGIN
+
+	WITH s SELECT
+		y <= "000" WHEN "00000001",
+		"001" WHEN "00000010",
+		"010" WHEN "00000100",
+		"011" WHEN "00001000",
+		"100" WHEN "00010000",
+		"101" WHEN "00100000",
+		"110" WHEN "01000000",
+		"111" WHEN "10000000",
+		"000" WHEN OTHERS;
+
+END Behavioral;
+
+-- Apartado e
+ENTITY comparador4bits IS
+	PORT (
+		x : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+		y : IN STD_LOGIC_VECTOR (3 DOWNTO 0);
+		z : OUT STD_LOGIC
+	);
+END comparador4bits;
+
+ARCHITECTURE Behavioral OF comparador4bits IS
+
+BEGIN
+
+	z <= '1' WHEN (x = y) ELSE
+		'0';
+
+END Behavioral;

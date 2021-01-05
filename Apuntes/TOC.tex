@@ -1,0 +1,43 @@
+\documentclass[twoside]{AiTeX}
+\usepackage{enumerate}
+
+\lstdefinestyle{customVHDL}{
+  backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    xleftmargin=\parindent,
+    language=vhdl,
+    emph={%  
+     = ,  <= %
+    },emphstyle={\color{magenta}}%
+}
+
+
+\begin{document}
+%\datos{facultad}{universidad}{grado}{asignatura}{subtitulo}{autor}{curso}
+\datos{Informática}{Universidad Complutense de Madrid}{Ingeniería informática}{Tecnología y Organización de Computadores}{Cómo diseñar circuitos para el mercado y aprender la importancia del diseño en el rendimiento final del dispositivo }{Alejandro Barrachina Argudo}{2020-2021}
+\portadaApuntes
+%\pagestyle{empty}
+\tableofcontents
+\justify
+\input{Temas/Tema_1.tex}%finished
+\newpage
+\input{Temas/Tema_2.tex}%finished
+\newpage
+\input{Temas/Tema_3.tex}
+
+\printglossary
+\end{document}

@@ -1,1 +1,5 @@
-/project_1/
+*.aux
+*.acn
+*.synctex.gz
+*.xdv
+*xdy
