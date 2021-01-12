@@ -90,6 +90,7 @@
 }
 \usepackage[parfill]{parskip}
 \usepackage{tabularx}
+\usepackage{multirow}
 
 %----------------------------------------------------------
 % New commands
@@ -210,3 +211,7 @@ Esta plantilla se crea para facilitar el proceso de elaborar apuntes\\\\
     \vspace{-0.5ex}%
     \noindent \rule{\textwidth}{0.3pt}
 }
+
+\makeatletter
+     \renewcommand*\l@figure{\@dottedtocline{1}{1em}{3.2em}}
+\makeatother

@@ -34,10 +34,17 @@
 \tableofcontents
 \justify
 \input{Temas/Tema_1.tex}%finished
-\newpage
 \input{Temas/Tema_2.tex}%finished
-\newpage
-\input{Temas/Tema_3.tex}
+\input{Temas/Tema_3.tex}%finished
+\input{Temas/Tema_4.tex}
 
-\printglossary
+\printglossary[title=Glosario]
+
+\let\cleardoublepage\clearpage
+\listoffigures
+\addcontentsline{toc}{chapter}{Índice de figuras}
+\let\cleardoublepage\clearpage
+
+\listoftables
+\addcontentsline{toc}{chapter}{Índice de cuadros}
 \end{document}

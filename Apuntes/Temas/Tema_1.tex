@@ -49,10 +49,10 @@ Un \gls{hdl} tiene que ser capaz de simular el comportamiento real del hardware 
 	D = A and B;
 \end{multicols}
 
-\textcolor{cyan}{¿Se obtiene el mismo resultado?} No, en la descripción 1 en t = 10ns el valor de S será 1, mientras que en la descripción 2 seguirá siendo 0.
+\textcolor{cyan}{?`Se obtiene el mismo resultado?} No, en la descripción 1 en t = 10ns el valor de S será 1, mientras que en la descripción 2 seguirá siendo 0.
 
 
-
+\newpage
 \section{Simulación con VHDL}
 \gls{vhdl} realiza la simulación siguiendo la técnica de \textbf{simulación por eventos discretos}, esto permite avanzar el tiempo a intervalos variables, en función de la planificación de ocurrencia de eventos.
 La simulación consta de tres fases:
@@ -61,7 +61,6 @@ La simulación consta de tres fases:
 	\item\textbf{Fase 1: }todas las transiciones planificadas para ese tiempo se ejecutan
 	\item\textbf{Fase 2: }las señales que se han modificado en consecuencia de las transiciones planificadas en el instante t se escriben en la lista de eventos planificándose para el instante t + $\delta$, donde $\delta$ es un instante infinitesimal. Una vez acabado esta fase se vuelve a la fase 1 hasta que se termine la simulación.
 \end{itemize}
-\newpage
 
 \begin{multicols}{3}
 	\begin{figure}[H]
@@ -81,7 +80,7 @@ La simulación consta de tres fases:
 \end{multicols}
 
 
-\textbf{Pregunta ejemplo 3: }¿Qué pasaría si en 5 en vez de cambiar B cambia C? S=1 ya que D or C si c = 1 siempre es 1.
+\textbf{Pregunta ejemplo 3: }?`Qué pasaría si en 5 en vez de cambiar B cambia C? S=1 ya que D or C si c = 1 siempre es 1.
 
 
 \section{Estructura de un modelo VHDL}
@@ -110,12 +109,13 @@ Cada architecture va asociada a una entity y se indica en la primera sentencia. 
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[style=customVHDL]{Code/Tema_1/Ejemplo_completo_1.vhd}
+	\caption{Ejemplo Entity y Architecture}
 \end{figure}
 
 \section{Elementos básicos de VHDL}
 
 Las sentencias concurrentes siempre se encuentran fuera de los PROCESS, aparecen en cualquier punto del programa después del begin de la arquitectura,  es lógica combinacional pura y siempre tiene un ELSE final o un WHEN OTHERS.
-\newpage
+
 \begin{multicols}{2}
 	\begin{figure}[H]
 		\centering
@@ -135,6 +135,7 @@ Los procesos son sentencias concurrentes. Solo se ejecutan esas sentencias que s
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[style=customVHDL, xleftmargin=.2\textwidth, xrightmargin=.2\textwidth]{Code/Tema_1/Ejemplo_Process.vhd}
+	\caption{Ejemplo Process}
 \end{figure}
 
 Las secuencias condicionales van dentro de un process, si la lista de sensibilidad está incompleta, el comportamiento del process será incorrecto. Estas sentencias deben tener un caso por defecto.
@@ -223,6 +224,7 @@ Se pueden definir tipos personalizados
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[style=customVHDL]{Code/Tema_1/Ejemplo_Tipos_Personalizados.vhd}
+	\caption{Ejemplo tipos personalizados}
 \end{figure}
 
 Arrays:
@@ -230,12 +232,14 @@ Arrays:
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[style=customVHDL]{Code/Tema_1/Ejemplo_Arrays.vhd}
+	\caption{Ejemplo Arrays}
 \end{figure}
 
 Un \textbf{componente} es una entidad que se describe dentro de una arquitectura
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[style=customVHDL, xleftmargin=.2\textwidth, xrightmargin=.2\textwidth]{Code/Tema_1/Ejemplo_Component.vhd}
+	\caption{Ejemplo Component}
 \end{figure}
 
 
@@ -244,6 +248,7 @@ Un \textbf{componente} es una entidad que se describe dentro de una arquitectura
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[style=customVHDL, xleftmargin=.2\textwidth, xrightmargin=.2\textwidth]{Code/Tema_1/Ejemplo_Generate.vhd}
+	\caption{Ejemplo Generate}
 \end{figure}
 
 Un \textbf{paquete} son agrupaciones de tipos, funciones y procedimientos personalizados. Pueden ser incluidos en uno o varios diseños, normalmente se definen en ficheros .vhd dedicados.
@@ -251,6 +256,7 @@ Un \textbf{paquete} son agrupaciones de tipos, funciones y procedimientos person
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[style=customVHDL, xleftmargin=.2\textwidth, xrightmargin=.2\textwidth]{Code/Tema_1/Ejemplo_Package.vhd}
+	\caption{Ejemplo Package}
 \end{figure}
 
 \section{Entidades parametrizables}
@@ -278,6 +284,7 @@ Cómo implementar una entrada periódica: clk
 \begin{figure}[H]
 	\centering
 	\lstinputlisting[style=customVHDL, xleftmargin=.2\textwidth, xrightmargin=.2\textwidth]{Code/Tema_1/Ejemplo_Clk.vhd}
+	\caption{Ejemplo Clk}
 \end{figure}
 
 Como este process no acaba con un wait sin for, se repetirá indefinidamente.
