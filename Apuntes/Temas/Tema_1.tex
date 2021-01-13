@@ -5,9 +5,9 @@
 TODO
 
 \section{Lenguaje de descripción hardware}
-\gls{hdl} es un lenguaje específicamente creado para el diseño de circuitos, tanto a nivel de puerta como a nivel e comportamiento. La estructura del lenguaje sugiere el diseño hardware.
+\gls{hdl} es un lenguaje específicamente creado para el diseño de circuitos, tanto a nivel de puerta como a nivel e comportamiento. La estructura del lenguaje sugiere el diseño \gls{hw}.
 
-Los \gls{hdl} se usan para poder descubrir problemas en el diseño del hardware antes de su implementación física. Como la complejidad de los sistemas electrónicos crece exponencialmente, es necesaria una herramienta que trabaje con el ordenador. Por último, gracias a estas herramientas más de una persona puede trabajar en el mismo proyecto
+Los \gls{hdl} se usan para poder descubrir problemas en el diseño del \gls{hw} antes de su implementación física. Como la complejidad de los sistemas electrónicos crece exponencialmente, es necesaria una herramienta que trabaje con el ordenador. Por último, gracias a estas herramientas más de una persona puede trabajar en el mismo proyecto
 
 En este curso usaremos \gls{vhdl}, esto nos permite hacer descripciones de la estructura del circuito con:
 \begin{itemize}
@@ -18,7 +18,7 @@ En este curso usaremos \gls{vhdl}, esto nos permite hacer descripciones de la es
 \end{itemize}
 También permite la especificación de un circuito utilizando formas familiares de lenguajes de programación y la simulación del circuito antes de su fabricación.
 
-Un \gls{hdl} tiene que ser capaz de simular el comportamiento real del hardware sin que el programador necesite imponer restricciones.
+Un \gls{hdl} tiene que ser capaz de simular el comportamiento real del \gls{hw} sin que el programador necesite imponer restricciones.
 
 \noindent \textbf{Ejemplo 1:}
 
@@ -291,9 +291,9 @@ Como este process no acaba con un wait sin for, se repetirá indefinidamente.
 
 
 \section{Introducción a las FPGAs}
-Una FPGA es un hardware de prototipado automático. Inicialmente servía para lo mismo que un entrenador, con la diferencia de que el circuito se implementaba automáticamente. Debido a su gran capacidad de procesamiento, versatilidad y a las herramientas de diseño 9. Introducción a las TC versatilidad y a las herramientas de diseño disponibles, actualmente existen circuitos comerciales que llevan FPGAs incorporadas.
+Una \gls{fpga} es un \gls{hw} de prototipado automático. Inicialmente servía para lo mismo que un entrenador, con la diferencia de que el circuito se implementaba automáticamente. Debido a su gran capacidad de procesamiento, versatilidad y a las herramientas de diseño 9. Introducción a las TC versatilidad y a las herramientas de diseño disponibles, actualmente existen circuitos comerciales que llevan \gls{fpga} incorporadas.
 
-Los componentes de una FPGA son:
+Los componentes de una \gls{fpga} son:
 \begin{itemize}
 	\item Celdas de entrada salida
 	\item Celdas lógicas programables
@@ -306,6 +306,6 @@ Los componentes de una FPGA son:
 Una CLB contiene:
 \begin{itemize}
 	\item Look-Up Tables: son memorias \gls{rom} que almacenan 1x16 bits, pueden implementar cualquier función lógica de 4 entradas.
-	\item Biestables: se utilizan en el caso de que la celda deba implementar HW secuencial. Se pueden configurar si son disparados por flanco o por nivel.
+	\item Biestables: se utilizan en el caso de que la celda deba implementar \gls{hw} secuencial. Se pueden configurar si son disparados por flanco o por nivel.
 	\item Multiplexores: para interconectar las entradas con los módulos o los módulos entre si se utilizan multiplexores
 \end{itemize}
