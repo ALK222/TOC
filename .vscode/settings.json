@@ -13,10 +13,10 @@
 	// 	{
 	// 		"name": "pdflatex, makeglossaries, pdflatex (2x)",
 	// 		"tools": [
-	// 			"pdflatex",
+	// 			"latexmk",
 	// 			"makeglossaries",
-	// 			"pdflatex",
-	// 			"pdflatex"
+	// 			"latexmk",
+	// 			"latexmk"
 	// 		]
 	// 	},
 	// ],
@@ -25,22 +25,21 @@
 	// 		"name": "latexmk",
 	// 		"command": "latexmk",
 	// 		"args": [
-	// 			"-shell-escape",
 	// 			"-synctex=1",
 	// 			"-interaction=nonstopmode",
 	// 			"-file-line-error",
 	// 			"-pdf",
 	// 			"-outdir=%OUTDIR%",
+	// 			"-f",
 	// 			"%DOC%"
-	// 		]
+	// 		],
+	// 		"env": {}
 	// 	},
 	// 	{
 	// 		"name": "pdflatex",
 	// 		"command": "pdflatex",
 	// 		"args": [
-	// 			"-synctex=1",
-	// 			"-interaction=nonstopmode",
-	// 			"-file-line-error",
+	// 			"-f",
 	// 			"%DOC%"
 	// 		]
 	// 	},

@@ -27,6 +27,8 @@ Todos están bien excepto el cerrojo. El código es mejorable.
 -   [Lab 4](./Practica_4)
     -   [Tragaperras básico/basic slot machine](./Practica_4/Basica)
     -   [Tragaperras avanzado/advanced slot machine](./PRactica_4/Avanzada)
+-   [Lab 5](./Practica_5)
+    -   [Procesador MIPS básico/basic MIPS Processor](./Practica_5/Basica)
 
 ## Exercises / Ejercicios
 

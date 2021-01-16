@@ -215,3 +215,37 @@ Primero se define el sistema: se especifican las entradas, salidas, función y b
 Seguidamente se crea un diagrama \gls{asm}: obtenemos un conjunto ordenado y finito de operaciones y un modelo de máquina de estados generalizada.\\
 
 Por último, diseñamos la unidad de control, la ruta de datos y las ensamblamos
+\begin{enumerate}
+	\item Estudio de la especificación:
+	      \begin{itemize}
+		      \item Esquema de pasos secuenciales a seguir (algoritmo)
+		      \item Posible \gls{hw} a utilizar (módulos específicos completos)
+	      \end{itemize}
+	\item Creación de un diagrama \gls{asm} partiendo de las conclusiones del apartado 1, crear un diagrama que cumpla las especificaciones.
+	\item Diseño de la unidad de control:
+	      \begin{itemize}
+		      \item Codificar cada uno de los estados del \gls{asm}
+		      \item Codificar el cambio de estado
+		            \begin{itemize}
+			            \item Mediante señales internas de control
+			            \item Mediante señales externas de control
+		            \end{itemize}
+		      \item Codificar las señales de control hacia la ruta de datos: cada estado tendrá asociados unos valores de todas las señales que controlan los módulos complejos
+	      \end{itemize}
+	\item Diseño de la ruta de datos:
+	      \begin{itemize}
+		      \item Interconectar las señales de control externas e internas a los módulos
+		      \item Interconectar las señales de control (obtenidas en el apartado 3) a los módulos de la ruta de datos
+	      \end{itemize}
+\end{enumerate}
+
+
+\subsection{Diagrama de Máquina de Estados Algorítmica (ASM)}
+Esta es una forma gráfica de representar el algoritmo.
+Los elementos de un diagrama son:
+\begin{itemize}
+	\item Cajas de estado: asignaciones y operaciones simultáneas.
+	\item Cajas de decisión: bifurcación condicional con dos posibilidades.
+	\item Cajas de salida condicional: asignaciones que se realizan cuando se cumple una condición.
+	\item Bloque ASM: una caja de estado con red de cajas de decisión y de salida condicional.
+\end{itemize}
