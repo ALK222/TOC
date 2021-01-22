@@ -101,4 +101,56 @@ Los parámetros de medición en las memorias son:
 		Disco duro                     & 1000 B          & 1 ms              & 0.001                 & 100-1000 mJ       \\
 		\hline
 	\end{tabularx}
+	\caption{Comparativa entre distintos tipos de memorias}
 \end{table}
+\section{Tecnologías de memoria}
+\subsection{\gls{sram}}
+Esta es una \gls{ram} estática. Almacena un bit en un biestable, el valor permanece mientras la memoria tenga alimentación. La ventaja de la \gls{sram} es su rapidez, su inconveniente es que necesita 6 transistores, lo cual no permite alcanzar grandes densidades de integración.
+\begin{multicols}{2}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\textwidth]{images/Tema_5/Celda_Basica_Ram.PNG}
+		\caption{Celda básica de la \gls{sram}}
+	\end{figure}
+	\vfill
+	\null
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\textwidth]{images/Tema_5/Operacion_SRAM.PNG}
+		\caption{Operación de la \gls{sram}}
+	\end{figure}
+	Cargamos o somos capaces de leer el valor almacenado si y sólo si WORDLINE vale 1.
+\end{multicols}
+
+\subsection{\gls{dram}}
+Esta es una \gls{ram} dinámica. Almacena un bit en un condensador (cargado o descargado). El condensador pierde voltaje a lo largo del tiempo por lo que tiene que ser refrescado periódicamente, por eso se dice que es una memoria dinámica. La ventaja de las memorias \gls{dram} es su simplicidad, sólo se necesita un condensador y un transistor para almacenar un bit. Esto permite grandes densidades de integración. Es una memoria volátil, pierde rápidamente la información cuando se apaga.
+\begin{multicols}{2}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\textwidth]{images/Tema_5/Celda_Basica_Dram.PNG}
+		\caption{Celda básica de una \gls{dram}}
+	\end{figure}
+	\textcolor{red}{LECTURA DESTRUCTIVA}\\
+	Operación de lectura RAS: 0 leyendo / 1 escribiendo(leer dato)
+	\vfill
+	\null
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\textwidth]{images/Tema_5/Organizacion_Dram.PNG}
+		\caption{Organización de una \gls{dram}}
+	\end{figure}
+	\textbf{RAS:} línea de selección de la fila
+
+	\textbf{CAS:} línea de selección de la columna
+\end{multicols}
+
+\subsubsection{Lectura}
+Las word-line se precargan con un nivel de voltaje entre 0  y 1 (se comportan como condensadores grandes) utilizando la mitad de la dirección que hace referencia a la fila. Este valor es mayor que el que está almacenado en las celdas \gls{dram}\\
+Al recibir la señal RAS, se selecciona una fila y se establece una conexión entre una línea y los condensadores de las celdas. Las cargas iniciales de ambos condensadores son compartidas. La distribución de carga resultante sigue las siguientes reglas.
+\[
+	q_{1} + q_{2} = q'_{1} + q'_{2}
+\]
+\[
+	\frac{q'_{1}}{c_{1}} = \frac{q'_{2}}{c_{2}}
+\]
+\noindent$q'_{1}$ y $q'_{2}$ serán diferentes dependiendo de la carga inicial de las celdas $q_{1}$ y $q_{2}$.

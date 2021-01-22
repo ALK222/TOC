@@ -8,47 +8,44 @@
 		"plaintext",
 		"tex",
 		"latex"
-	]//,
-	// "latex-workshop.latex.recipes": [
-	// 	{
-	// 		"name": "pdflatex, makeglossaries, pdflatex (2x)",
-	// 		"tools": [
-	// 			"latexmk",
-	// 			"makeglossaries",
-	// 			"latexmk",
-	// 			"latexmk"
-	// 		]
-	// 	},
-	// ],
-	// "latex-workshop.latex.tools": [
-	// 	{
-	// 		"name": "latexmk",
-	// 		"command": "latexmk",
-	// 		"args": [
-	// 			"-synctex=1",
-	// 			"-interaction=nonstopmode",
-	// 			"-file-line-error",
-	// 			"-pdf",
-	// 			"-outdir=%OUTDIR%",
-	// 			"-f",
-	// 			"%DOC%"
-	// 		],
-	// 		"env": {}
-	// 	},
-	// 	{
-	// 		"name": "pdflatex",
-	// 		"command": "pdflatex",
-	// 		"args": [
-	// 			"-f",
-	// 			"%DOC%"
-	// 		]
-	// 	},
-	// 	{
-	// 		"name": "makeglossaries",
-	// 		"command": "makeglossaries",
-	// 		"args": [
-	// 			"%DOCFILE%"
-	// 		]
-	// 	}
-	// ]
+	],
+	 "latex-workshop.latex.recipes": [
+	 	{
+	 		"name": "pdflatex, makeglossaries, pdflatex (2x)",
+	 		"tools": [
+	 			"xelatex",
+	 			"makeglossaries",
+	 			"xelatex",
+	 			"xelatex"
+	 		]
+	 	},
+	 ],
+	 "latex-workshop.latex.tools": [
+	 	{
+	 		"name": "xelatex",
+	 		"command": "xelatex",
+	 		"args": [
+	 			"-latexoption=-file-line-error",
+	 			"-latexoption=-interaction=nonstopmode",
+	 			"-f",
+	 			"%DOC%"
+	 		],
+	 		"env": {}
+	 	},
+	 	{
+	 		"name": "pdflatex",
+	 		"command": "pdflatex",
+	 		"args": [
+	 			"-f",
+	 			"%DOC%"
+	 		]
+	 	},
+	 	{
+	 		"name": "makeglossaries",
+	 		"command": "makeglossaries",
+	 		"args": [
+	 			"%DOCFILE%"
+	 		]
+	 	}
+	 ]
 }
